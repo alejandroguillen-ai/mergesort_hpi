@@ -26,8 +26,25 @@ def merge(l1: List[int | float], l2: List[int | float]) -> List[int | float]:
     Return:
         List[int | float]: sorted list with the elements of both l1 and l2
     """
-    
-    return None
+    sorted_list = []
+        
+    i = j = 0
+    s1, s2 = len(l1), len(l2)
+        
+    # Compare the smallest remaining element of each list
+    while i < s1 and j < s2:
+        if l1[i] <= l2[j]:
+            sorted_list.append(l1[i])
+            i += 1
+        else:
+            sorted_list.append(l2[j])
+            j += 1            
+                
+    # One list is finished -> append the rest of the other one
+    if i < s1: sorted_list += l1[i:]
+    if j < s2: sorted_list += l2[j:]
+        
+    return sorted_list
     
     
 def mergesort(main_list:List[int | float]) -> List[int | float]:
