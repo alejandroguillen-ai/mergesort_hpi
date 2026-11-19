@@ -47,16 +47,27 @@ def merge(l1: List[int | float], l2: List[int | float]) -> List[int | float]:
     return sorted_list
     
     
-def mergesort(main_list:List[int | float]) -> List[int | float]:
+def mergesort(main_list:List) -> List:
     """
     Javier Romero
     Divides the list into two halves that will be sorted
     
     Args:
-        main_list (List[int | float]): non-sorted list
+        main_list (List): non-sorted list
         
     Return:
-        List[int | float]: list with the elements from main_list sorted
+        List: new list with the elements from main_list sorted
     """
-    
-    return None
+
+    if len(main_list) <= 1:
+        return main_list
+
+    mid = len(main_list) // 2
+
+    left = main_list[:mid]
+    right = main_list[mid:]
+
+    left = mergesort(left)
+    right = mergesort(right)
+
+    return merge(left, right)
