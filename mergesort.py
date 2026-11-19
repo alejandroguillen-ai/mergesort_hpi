@@ -11,8 +11,12 @@ def validate_input(l: List) -> bool:
     Return:
         bool: whether the list is numeric (True) or not (False)
     """
-    
-    return None
+    # bool is a subclass of int in Python, so it is rejected explicitly
+    if all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in l):
+        return True
+
+    print("List should be numeric")
+    return False
     
 def merge(l1: List[int | float], l2: List[int | float]) -> List[int | float]:
     """
